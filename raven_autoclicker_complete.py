@@ -939,13 +939,12 @@ Advanced auto-clicking solution with enterprise-grade features:
         self.worker_thread = QThread()
         self.worker.moveToThread(self.worker_thread)
         
-        self.worker.started = self.worker.start_clicking
         self.worker.status_update.connect(self.update_status)
         self.worker.stats_update.connect(self.update_stats)
         self.worker.finished.connect(self.on_clicking_finished)
         
         self.worker_thread.start()
-        self.worker.started.emit()
+        self.worker.start_clicking()
         
         self.start_btn.setEnabled(False)
         self.stop_btn.setEnabled(True)
